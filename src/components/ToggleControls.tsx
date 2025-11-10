@@ -69,13 +69,10 @@ export const ToggleControls = ({onJSToggle}: ToggleControlsProps) => {
     if (jsEnabled) {
       setShowJSDialog(true);
     } else {
-      // When JS is disabled, use native confirm since React won't work
-      const confirmed = window.confirm(
-        "Enable JavaScript?\n\nThis will restore all interactive features to the page."
+      // When JS is disabled, show message that page needs to be refreshed
+      window.alert(
+        "JavaScript is disabled. To enable JavaScript, please refresh the page."
       );
-      if (confirmed) {
-        enableJS();
-      }
     }
   };
 
