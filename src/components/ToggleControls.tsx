@@ -26,7 +26,13 @@ export const ToggleControls = ({onJSToggle}: ToggleControlsProps) => {
     if (cssEnabled) {
       setShowCSSDialog(true);
     } else {
-      enableCSS();
+      // When CSS is disabled, confirm immediately without dialog since dialogs won't be styled
+      const confirmed = window.confirm(
+        "Enable CSS Styles?\n\nThis will restore all styling to the page."
+      );
+      if (confirmed) {
+        enableCSS();
+      }
     }
   };
 
@@ -63,7 +69,13 @@ export const ToggleControls = ({onJSToggle}: ToggleControlsProps) => {
     if (jsEnabled) {
       setShowJSDialog(true);
     } else {
-      enableJS();
+      // When JS is disabled, use native confirm since React won't work
+      const confirmed = window.confirm(
+        "Enable JavaScript?\n\nThis will restore all interactive features to the page."
+      );
+      if (confirmed) {
+        enableJS();
+      }
     }
   };
 

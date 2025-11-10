@@ -1,8 +1,8 @@
-import { useEffect, useRef, ReactNode } from "react";
+import {useEffect, useRef, ReactNode} from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {Card} from "./ui/card";
+import {Badge} from "./ui/badge";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,26 +67,28 @@ export const TechCard = ({
   }, [jsEnabled]);
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-8 sm:py-12 md:py-16 px-4">
       <div className="container mx-auto max-w-6xl">
         <Card
           ref={cardRef}
           className={`relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-500 group ${
             index % 2 === 0 ? "md:mr-12" : "md:ml-12"
-          } ${!jsEnabled ? 'opacity-100' : ''}`}
+          } ${!jsEnabled ? "opacity-100" : ""}`}
         >
           {/* Gradient overlay */}
-          <div className={`absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity ${gradient}`} />
+          <div
+            className={`absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity ${gradient}`}
+          />
 
-          <div className="relative p-8 md:p-12">
+          <div className="relative p-4 sm:p-6 md:p-8 lg:p-12">
             {/* Header */}
-            <div className="flex items-start justify-between mb-8">
-              <div className="flex items-center gap-4">
-                <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 shadow-glow">
+            <div className="flex items-start justify-between mb-4 sm:mb-6 md:mb-8 flex-col sm:flex-row gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 flex-col sm:flex-row">
+                <div className="p-3 sm:p-4 rounded-2xl bg-primary/10 border border-primary/20 shadow-glow">
                   {icon}
                 </div>
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                     {title}
                   </h2>
                   <Badge variant="secondary" className="text-xs font-mono">
@@ -97,23 +99,25 @@ export const TechCard = ({
             </div>
 
             {/* Description */}
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-3xl">
               {description}
             </p>
 
             {/* Features Grid */}
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-start gap-3 p-4 rounded-xl bg-secondary/30 border border-border/50 transition-all duration-300 ${
-                    jsEnabled ? 'hover:bg-secondary/50 hover:translate-x-1' : ''
+                  className={`flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-secondary/30 border border-border/50 transition-all duration-300 ${
+                    jsEnabled ? "hover:bg-secondary/50 hover:translate-x-1" : ""
                   }`}
                 >
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
                     <span className="text-primary text-sm font-bold">✓</span>
                   </div>
-                  <span className="text-foreground text-sm leading-relaxed">{feature}</span>
+                  <span className="text-foreground text-xs sm:text-sm leading-relaxed">
+                    {feature}
+                  </span>
                 </div>
               ))}
             </div>
@@ -123,7 +127,7 @@ export const TechCard = ({
               ref={codeRef}
               className="rounded-xl overflow-hidden border border-border/50 bg-code-bg shadow-glow"
             >
-              <div className="flex items-center gap-2 px-4 py-3 bg-card/50 border-b border-border/30">
+              <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-card/50 border-b border-border/30">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
                   <div className="w-2.5 h-2.5 rounded-full bg-accent/60" />
@@ -133,10 +137,10 @@ export const TechCard = ({
                   example.{codeExample.language}
                 </span>
               </div>
-              <pre className="p-6 overflow-x-auto">
+              <pre className="p-3 sm:p-4 md:p-6 overflow-x-auto">
                 <code
-                  className="font-mono text-sm leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: codeExample.code }}
+                  className="font-mono text-xs sm:text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{__html: codeExample.code}}
                 />
               </pre>
             </div>

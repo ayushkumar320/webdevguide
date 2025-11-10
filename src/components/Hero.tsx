@@ -92,7 +92,7 @@ export const Hero = ({jsEnabled = true}: HeroProps) => {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
+        <div className="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6 md:space-y-8">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-primary" />
